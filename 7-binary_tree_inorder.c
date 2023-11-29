@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_inorder - Function transverses the list 
+ * binary_tree_inorder - Function transverses the list
  *						using in-order transversal
  * @tree: The tree to be transversed
  * @func: Function pointer
