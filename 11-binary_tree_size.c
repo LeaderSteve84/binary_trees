@@ -8,14 +8,29 @@
 */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	size_t ret, ret2, add = 0;
-
 	if (!tree)
 		return (0);
-	if (tree->parent == NULL)
-		add = 2;
-	ret = 1 + binary_tree_size(tree->left);
-	ret2 = 1 + binary_tree_size(tree->right);
+	return (size_helper(tree));
+}
 
-	return ((ret > ret2) ? ret : ret2 + add);
+/**
+ * size_helper - Helps the binary_tree_size function to measure
+ *				the size of a binary tree
+ * @tree: The binary tree
+ * Return: The size
+*/
+size_t size_helper(const binary_tree_t *tree)
+{
+	size_t left, right, ret = 0;
+
+	if (tree->parent == NULL)
+		ret = 1;
+	left = 1 + binary_tree_size(tree->left);
+	right = 1 + binary_tree_size(tree->right);
+
+	if ((left + right) % 2 == 0)
+		ret += ((left + right) / 2);
+	else
+		ret += (left + right);
+	return (ret);
 }
